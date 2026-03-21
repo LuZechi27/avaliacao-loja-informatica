@@ -1,0 +1,30 @@
+.text-area {
+    margin: 24px;
+}
+
+.text-area label {
+    color: var(--text-color);
+    display: block;
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+
+.text-area input {
+    appearance: none;
+    color: var(--text-color);
+    background-color: var(--background);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    font-size: 24px;
+    padding: 24px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+.text-area input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
