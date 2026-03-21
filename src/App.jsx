@@ -5,6 +5,9 @@ import Forms from './components/Forms/Forms';
 
 function App() {
 
+    // todo : listar os produtos
+
+
     const storeSections = [
         {
             name: "Computadores",
