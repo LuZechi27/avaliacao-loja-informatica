@@ -8,7 +8,7 @@ import SubmitButton from "../SubmitButton/SubmitButton";
 const Forms = ({ sections, brands , onInsert}) => {
 
     const [section, setSection] = useState("Computadores");
-    const [brand, setBrand] = useState("Xing Ling genérico");
+    const [brand, setBrand] = useState("HP");
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
     const [state, setState] = useState("novo");
@@ -24,6 +24,11 @@ const Forms = ({ sections, brands , onInsert}) => {
                 "state": state
             }
         )
+        setSection("Computadores");
+        setBrand("HP");
+        setName("");
+        setPrice("");
+        setState("novo");
     }
 
     return (
@@ -56,7 +61,7 @@ const Forms = ({ sections, brands , onInsert}) => {
                 <TextArea
                     label="Preco:"
                     type="number"
-                    placeholder="Digite o nome do produto"
+                    placeholder="Digite o preço do produto"
                     value={price}
                     onChange={value => setPrice(value)}
                 />

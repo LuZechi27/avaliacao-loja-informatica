@@ -2,17 +2,16 @@ import { useState } from 'react'
 import './App.css'
 import HeaderBanner from './components/HeaderBanner/HeaderBanner';
 import Forms from './components/Forms/Forms';
+import Footer from './components/Footer/Footer';
+import StoreSection from './components/StoreSection/StoreSection';
 
 function App() {
-
-    // todo : listar os produtos
-
 
     const storeSections = [
         {
             name: "Computadores",
-            primaryColor: "#9bf1ec",
-            secondaryColor: "#0affed"
+            primaryColor: "#b1f0ed",
+            secondaryColor: "#07cabd"
         },
         {
             name: "Acessórios",
@@ -21,44 +20,77 @@ function App() {
         },
         {
             name: "Impressoras",
-            primaryColor: "#9bf1ec",
-            secondaryColor: "#0affed"
+            primaryColor: "#67cbd6",
+            secondaryColor: "#087F8C"
         },
         {
             name: "Games",
-            primaryColor: "#e67eb5",
-            secondaryColor: "#D72483"
+            primaryColor: "#4d82c2",
+            secondaryColor: "#03254E"
         },
         {
             name: "Gadgets",
-            primaryColor: "#9bf1ec",
-            secondaryColor: "#0affed"
+            primaryColor: "#f1a38f",
+            secondaryColor: "#FF4A1C"
         },
     ];
 
     const brands = [
-        "HP",
-        "Dell",
-        "Positivo",
-        "Asus",
-        "Xing Ling genérico"
+        {
+            name: "HP",
+            image: "/images/hp-logo.png"
+        },
+        {
+            name: "Dell",
+            image: "/images/dell-3.svg"
+        },
+        {
+            name: "Positivo",
+            image: "/images/positivo-logo.jpg"
+        },
+        {
+            name: "Asus",
+            image: "/images/logo-asus.png"
+        },
+        {
+            name: "Xing Ling genérico",
+            image: "/images/xing-ling-generico.png"
+        }
     ]
 
     const sectionNames = storeSections.map(section => section.name);
+    const brandNames = brands.map(brand => brand.name);
+
+    const [products, setProducts] = useState([]);
+
+    const addProduct = (prod) => {
+        const newProductList = products.slice();
+        newProductList.push(prod);
+        setProducts(newProductList);
+        console.log(products);
+    }
 
     return (
         <div>
             <HeaderBanner />
             <Forms
                 sections={sectionNames}
-                brands={brands}
-                onInsert={value => console.log(value)}
+                brands={brandNames}
+                onInsert={prod => addProduct(prod)}
             />
-
-            <footer className='footer'>
-                <p>Feito por Luiz Gustavo Silva Zechi</p>
-                <p>IFSP São carlos</p>
-            </footer>
+            {storeSections.map(section => {
+                return (
+                    <StoreSection
+                        key={section.name}
+                        name={section.name}
+                        primaryColor={section.primaryColor}
+                        secondaryColor={section.secondaryColor}
+                        brands={brands}
+                        products={products.filter(prod => prod.section === section.name)}
+                    />
+                );
+            })}
+            <Footer />
         </div>
     )
 }
