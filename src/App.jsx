@@ -67,7 +67,6 @@ function App() {
         const newProductList = products.slice();
         newProductList.push(prod);
         setProducts(newProductList);
-        console.log(products);
     }
 
     return (
