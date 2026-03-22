@@ -11,7 +11,7 @@ const Product = ({brands, name, price, state, brandName }) => {
             </div>
             <div className="productFooter">
                 <h4>{name}</h4>
-                <h4>{price}</h4>
+                <h4>{"R$ " + price}</h4>
                 <h5>{state}</h5>
             </div>
         </div>
